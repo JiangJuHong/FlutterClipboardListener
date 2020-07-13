@@ -3,7 +3,8 @@ import 'dart:ui';
 import 'package:flutter/services.dart';
 
 class ClipboardListener {
-  static const MethodChannel _channel = const MethodChannel('clipboard_listener');
+  static const MethodChannel _channel =
+      const MethodChannel('clipboard_listener');
 
   /// 监听器对象
   static ClipboardListenerObj _listener;
