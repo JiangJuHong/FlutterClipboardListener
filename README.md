@@ -1,4 +1,5 @@
 # clipboard_listener
+[![pub package](https://img.shields.io/pub/v/tencent_im_plugin.svg)](https://pub.dartlang.org/packages/clipboard_listener)
 Flutter 粘贴板监听器，在粘贴板内容改变时通知您  
 **注意：由于Android10改变了监听器策略，因此，当您的APP在后台运行时，将不会通知您**  
 **注意：由于IOS系统监听器策略，因此，当您的APP在后台运行时，将不会通知您**  
@@ -9,6 +10,11 @@ Flutter 粘贴板监听器，在粘贴板内容改变时通知您
 ## Getting Started
 Android 基于： `ClipboardManager.OnPrimaryClipChangedListener`  
 IOS 基于：`UIPasteboardChangedNotification`
+
+### 集成
+```
+clipboard_listener: ^[最新版本号]
+```
 
 ### 使用方法
 通过 `ClipboardListener.addListener` 和 `ClipboardListener.removeListener` 可进行事件监听  
