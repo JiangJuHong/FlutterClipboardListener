@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
-import 'dart:async';
+import 'dart:io';
+import 'dart:math';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:clipboard_listener/clipboard_listener.dart';
 
@@ -14,31 +15,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
+  TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      platformVersion = await ClipboardListener.platformVersion;
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
+    ClipboardListener.addListener(() async {
+      _controller.text = "粘贴板发生改变:${(await Clipboard.getData(Clipboard.kTextPlain)).text}";
     });
   }
 
@@ -49,8 +32,36 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+        body: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            children: <Widget>[
+              Offstage(
+                offstage: !Platform.isAndroid,
+                child: Text(
+                  "**注意：由于Android10改变了监听器策略，因此，当您的APP在后台运行时，将不会通知您**",
+                  style: TextStyle(color: Colors.red),
+                ),
+              ),
+              Container(
+                height: 10,
+              ),
+              TextField(
+                controller: _controller,
+                maxLines: null,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  enabled: false,
+                ),
+              ),
+              RaisedButton(
+                child: Text("立即复制随机值"),
+                onPressed: () {
+                  Clipboard.setData(ClipboardData(text: "${Random().nextDouble()}"));
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

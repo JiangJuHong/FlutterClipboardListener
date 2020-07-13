@@ -1,8 +1,8 @@
 name: clipboard_listener
 description: The flutter pasteboard listener can monitor pasteboard changes and notify you by callback
 version: 0.0.1
-author:
-homepage:
+author: 690717394@qq.com
+homepage: https://github.com/JiangJuHong/FlutterClipboardListener
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
