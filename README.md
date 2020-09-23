@@ -11,6 +11,12 @@ Flutter 粘贴板监听器，在粘贴板内容改变时通知您
 Android 基于： `ClipboardManager.OnPrimaryClipChangedListener`  
 IOS 基于：`UIPasteboardChangedNotification`
 
+## 讨论群
+<img
+src="https://raw.githubusercontent.com/JiangJuHong/access-images/master/other/qq-group.jpg"
+height="300em" style="max-width:100%;display: inline-block;"/>  
+[点击加入群聊](https://jq.qq.com/?_wv=1027&k=QxCWMlUf)  
+
 ### 集成
 ```
 clipboard_listener: ^[最新版本号]
