@@ -1,3 +1,5 @@
-## 0.0.1
+## 2.0.0
+* null-safety
 
-* TODO: Describe initial release.
+## 1.0.0
+* The first version

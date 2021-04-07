@@ -7,14 +7,14 @@ class ClipboardListener {
       const MethodChannel('clipboard_listener');
 
   /// 监听器对象
-  static ClipboardListenerObj _listener;
+  static ClipboardListenerObj? _listener;
 
   /// 添加消息监听
   static void addListener(VoidCallback func) {
     if (_listener == null) {
       _listener = ClipboardListenerObj(_channel);
     }
-    _listener.addListener(func);
+    _listener!.addListener(func);
   }
 
   /// 移除消息监听
@@ -22,7 +22,7 @@ class ClipboardListener {
     if (_listener == null) {
       _listener = ClipboardListenerObj(_channel);
     }
-    _listener.removeListener(func);
+    _listener!.removeListener(func);
   }
 }
 

@@ -21,7 +21,8 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     ClipboardListener.addListener(() async {
-      _controller.text = "粘贴板发生改变:${(await Clipboard.getData(Clipboard.kTextPlain)).text}";
+      _controller.text =
+          "粘贴板发生改变:${(await Clipboard.getData(Clipboard.kTextPlain))!.text}";
     });
   }
 
@@ -54,10 +55,11 @@ class _MyAppState extends State<MyApp> {
                   enabled: false,
                 ),
               ),
-              RaisedButton(
+              OutlinedButton(
                 child: Text("立即复制随机值"),
                 onPressed: () {
-                  Clipboard.setData(ClipboardData(text: "${Random().nextDouble()}"));
+                  Clipboard.setData(
+                      ClipboardData(text: "${Random().nextDouble()}"));
                 },
               ),
             ],
